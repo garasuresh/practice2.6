@@ -8,10 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/app/example", name="homepage")
+     * @Route("/", name="homepage")
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $conditions = $em->getRepository('AppBundle:Conditions')->findAll();
+
+        return $this->render('AppBundle::index.html.twig', array('conditions'=>$conditions));
     }
 }

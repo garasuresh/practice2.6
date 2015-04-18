@@ -1,0 +1,15 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+<h2>Conditions</h2>
+    {%for condition in conditions %}
+        <ul>
+            <h3>{{ condition.name | capitalize }}</h3>
+            {% if condition.symptom is defined and condition.symptom is not null %}
+                {% for symptom in condition.symptom %}
+                    <li>{{ symptom.name|capitalize }}</li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    {% endfor %}
+{%endblock%}

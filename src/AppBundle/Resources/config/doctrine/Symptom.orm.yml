@@ -1,0 +1,24 @@
+AppBundle\Entity\Symptom:
+    type: entity
+    table: symptoms
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+            nullable: true
+
+    manyToOne:
+         condition:
+           targetEntity: AppBundle\Entity\Conditions
+           mappedBy: id
+           inversedBy: Conditions
+    lifecycleCallbacks: {  }
